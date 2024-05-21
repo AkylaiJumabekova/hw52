@@ -44,3 +44,6 @@ class CardDeck {
     return cards;
   }
 }
+
+
+export default CardDeck;
