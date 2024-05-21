@@ -6,11 +6,17 @@ interface CardProps {
 }
 
 const MyCard: React.FC<CardProps> = ({rank, suit}) => {
+    const logos: { [key: string]: string } = {
+        hearts: "♥️",
+        diams: "♦️",
+        clubs: "♣️",
+        spades: "♠️"
+    };
 
     return (
         <div className={`card rank-${rank.toLowerCase()} ${suit}`}>
             <span className="rank">{rank}</span>
-            <span className="suit">{suit}</span>
+            <span className="suit">{logos[suit]}</span>
         </div>
     );
 };
