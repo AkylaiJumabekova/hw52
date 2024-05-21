@@ -3,14 +3,20 @@ import CardDeck from "./lib/CardDeck.ts";
 import MyCard from "./components/MyCard/MyCard";
 import { useState } from "react";
 import Card from "./lib/Card.ts";
+import Combinations from "./lib/Combinations.ts";
 
 function App() {
   const [keepCards, setKeepCards] = useState<Card[]>([]);
 
+  const [answer, setAnswer] = useState<string>("");
+
   const give = () => {
     const stake = new CardDeck();
     const newDesck = stake.getCards(5);
+    const pokerCombinations = new Combinations(newDesck);
+
     setKeepCards(newDesck);
+    setAnswer(pokerCombinations.getOutcome());
   };
 
   return (
@@ -24,6 +30,8 @@ function App() {
       })}
 
       <button onClick={give}> Раздать карты</button>
+
+      <div><h4>Комбинация: {answer} </h4></div>
     </div>
   );
 }
